@@ -1,4 +1,4 @@
-from gert.cli import cli
+from gert import main
 
 if __name__ == "__main__":
-    cli()
+    main()

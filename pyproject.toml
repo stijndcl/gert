@@ -11,6 +11,11 @@ description = "Ghent University Examination Results Tool"
 authors = ["stijndcl"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/stijndcl/gert"
+repository = "https://github.com/stijndcl/gert"
+packages = [
+    {include = "gert"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -27,6 +32,12 @@ flake8-bugbear = "^23.1.20"
 flake8-isort = "^6.0.0"
 flake8-simplify = "^0.19.3"
 pre-commit = "^3.0.1"
+
+[tool.poetry.scripts]
+gert = "gert:main"
+
+[tool.poetry.urls]
+issues = "https://github.com/stijndcl/gert/issues"
 
 [build-system]
 requires = ["poetry-core"]
