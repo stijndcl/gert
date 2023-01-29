@@ -23,4 +23,4 @@ def combine(previous: Image, current: Image) -> Image:
 
     # Cut off extra whitespace at the bottom
     left, top, right, bottom = result.getbbox()
-    return result.crop((left, top, right, 1125))
+    return result.crop((left, top, right, 1135))

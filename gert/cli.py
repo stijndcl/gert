@@ -24,8 +24,7 @@ def cli(previous: str, current: str, outdir: str):
                 f"Warning: unable to locate course {course} in {previous}. Skipping.",
                 file=sys.stderr,
             )
-            # continue
-            sys.exit(1)
+            continue
 
         combined = combine(previous_image, current_image)
         combined.save(f"{outdir}/{course.replace(' ', '_').lower()}.png")
