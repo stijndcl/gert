@@ -14,15 +14,11 @@ Parsing PDFs is difficult, and I was unable to find any libraries that could do 
 You may need to install `poppler` to get this tool to work. On most Linux distributions, it should already be included by default.
 
 ```shell
-# Mac
-$ brew install poppler
-
 # Linux
 $ sudo apt install poppler-utils
+
+# Mac
+$ brew install poppler
 ```
 
-### So, if you're on Windows
-
-![Jeremy Clarkson laughing at you](https://media.tenor.com/9TAVUk27odIAAAAC/jeremy-clarkson-laughing.gif)
-
-_It's back to MSPaint for you._
+![Jeremy Clarkson laughing at Windows users in a heavily compressed GIF to get around the 10 MB file size limit](./assets/windows-compressed.gif)
