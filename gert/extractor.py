@@ -1,5 +1,6 @@
 from pdf2image import convert_from_path
 from PIL.Image import Image
+from PIL.ImageDraw import Draw
 from pypdf import PdfReader
 
 __all__ = ["extract"]
@@ -25,22 +26,37 @@ def extract(file: str) -> dict[str, Image]:
 
             is_first_page = False
 
+        thicken_boxes(images[i])
+
         # Find name of the course
         for line in text.split("\n"):
             if line.startswith(" "):
-                course_mapping[line] = images[i]
+                course_mapping[line.strip()] = images[i]
                 break
 
     return course_mapping
 
 
-def get_info_and_graph(image: Image) -> Image:
-    """Crop out the course info on top of the page
-    We only want to display this info once
-    """
-    space_top = 150
-    total_height = 450
-    left, top, right, bottom = image.getbbox()
-    top = space_top
-    bottom = space_top + total_height
-    return image.crop((left, top, right, bottom))
+def thicken_boxes(image: Image):
+    """Apply an extra border to the boxes because the PDF conversion destroys them"""
+    line_width = 3
+
+    left, top = 54, 274
+    right, bottom = 776, 598
+
+    draw = Draw(image, mode="RGB")
+    draw.line((left, top, right, top), fill=(0, 0, 0), width=line_width)
+    draw.line((left, top, left, bottom), fill=(0, 0, 0), width=line_width)
+    draw.line((left, bottom, right, bottom), fill=(0, 0, 0), width=line_width)
+    draw.line((right, top, right, bottom), fill=(0, 0, 0), width=line_width)
+
+    # Second rectangle
+    left += 822
+    right += 822
+    top -= 3
+    bottom -= 2
+
+    draw.line((left, top, right, top), fill=(0, 0, 0), width=line_width)
+    draw.line((left, top, left, bottom), fill=(0, 0, 0), width=line_width)
+    draw.line((left, bottom, right, bottom), fill=(0, 0, 0), width=line_width)
+    draw.line((right, top, right, bottom), fill=(0, 0, 0), width=line_width)

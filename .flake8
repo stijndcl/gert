@@ -1,0 +1,9 @@
+[flake8]
+# Don't lint non-Python files
+exclude =
+    .git,
+    .github,
+    __pycache__,
+    venv,
+    .venv
+max-line-length = 120
