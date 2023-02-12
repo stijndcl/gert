@@ -12,7 +12,7 @@ __all__ = ["cli"]
 @click.command()
 @click.argument("previous")
 @click.argument("current")
-@click.option("--outdir")
+@click.option("--outdir", required=True)
 def cli(previous: str, current: str, outdir: str):
     ensure_outdir(outdir)
 
